@@ -58,7 +58,7 @@ public class ClosureTestStatement extends Statement {
   @Override
   public void evaluate() throws Throwable {
     URL testUrl = filePathToUrlFn.apply(testPath);
-    LOG.info("Running: " + testUrl);
+    LOG.finest("Running: " + testUrl);
 
     Stopwatch stopwatch = Stopwatch.createStarted();
 

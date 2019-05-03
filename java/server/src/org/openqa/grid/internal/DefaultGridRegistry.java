@@ -47,7 +47,7 @@ public class DefaultGridRegistry extends BaseGridRegistry implements GridRegistr
   protected static class UncaughtExceptionHandler implements Thread.UncaughtExceptionHandler {
     @Override
     public void uncaughtException(Thread t, Throwable e) {
-      LOG.log(Level.SEVERE, "Matcher thread dying due to unhandled exception.", e);
+      LOG.log(Level.FINEST, "Matcher thread dying due to unhandled exception.", e);
     }
   }
 
@@ -292,7 +292,7 @@ public class DefaultGridRegistry extends BaseGridRegistry implements GridRegistr
       release(session1, reason);
       return;
     }
-    LOG.warning("Tried to release session with internal key " + internalKey +
+    LOG.finest("Tried to release session with internal key " + internalKey +
                 " but couldn't find it.");
   }
 
@@ -304,7 +304,7 @@ public class DefaultGridRegistry extends BaseGridRegistry implements GridRegistr
     if (proxy == null) {
       return;
     }
-    LOG.info("Registered a node " + proxy);
+    LOG.finest("Registered a node " + proxy);
     try {
       lock.lock();
 

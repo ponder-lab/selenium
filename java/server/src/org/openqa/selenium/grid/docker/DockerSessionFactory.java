@@ -78,7 +78,7 @@ public class DockerSessionFactory implements SessionFactory {
 
   @Override
   public Optional<ActiveSession> apply(CreateSessionRequest sessionRequest) {
-    LOG.info("Starting session for " + sessionRequest.getCapabilities());
+    LOG.finest("Starting session for " + sessionRequest.getCapabilities());
     int port = PortProber.findFreePort();
     URL remoteAddress = getUrl(port);
     URI remoteUri = null;
@@ -89,11 +89,11 @@ public class DockerSessionFactory implements SessionFactory {
     }
     HttpClient client = clientFactory.createClient(remoteAddress);
 
-    LOG.info("Creating container, mapping container port 4444 to " + port);
+    LOG.finest("Creating container, mapping container port 4444 to " + port);
     Container container = docker.create(image(image).map(Port.tcp(4444), Port.tcp(port)));
     container.start();
 
-    LOG.info(String.format("Waiting for server to start (container id: %s)", container.getId()));
+    LOG.finest(String.format("Waiting for server to start (container id: %s)", container.getId()));
     try {
       waitForServerToStart(client, Duration.ofMinutes(1));
     } catch (TimeoutException e) {
@@ -103,7 +103,7 @@ public class DockerSessionFactory implements SessionFactory {
           "Unable to connect to docker server (container id: %s)", container.getId()));
       return Optional.empty();
     }
-    LOG.info(String.format("Server is ready (container id: %s)", container.getId()));
+    LOG.finest(String.format("Server is ready (container id: %s)", container.getId()));
 
     Command command = new Command(
         null,
@@ -127,7 +127,7 @@ public class DockerSessionFactory implements SessionFactory {
                          result.getDialect() :
                          W3C;
 
-    LOG.info(String.format(
+    LOG.finest(String.format(
         "Created session: %s - %s (container id: %s)",
         id,
         capabilities,
@@ -150,7 +150,7 @@ public class DockerSessionFactory implements SessionFactory {
     wait.until(obj -> {
       try {
         HttpResponse response = client.execute(new HttpRequest(GET, "/status"));
-        LOG.fine(response.getContentString());
+        LOG.finest(response.getContentString());
         return 200 == response.getStatus();
       } catch (IOException e) {
         throw new UncheckedIOException(e);
