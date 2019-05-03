@@ -147,7 +147,7 @@ class OsProcess {
       return getExitCode();
     }
 
-    log.severe(String.format("Unable to kill process %s", watchdog.process));
+    log.finest(String.format("Unable to kill process %s", watchdog.process));
     int exitCode = -1;
     executor.setExitValue(exitCode);
     return exitCode;

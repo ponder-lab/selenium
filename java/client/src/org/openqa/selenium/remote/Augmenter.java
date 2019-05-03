@@ -73,7 +73,7 @@ public class Augmenter extends BaseAugmenter {
       return (RemoteWebDriver) driver;
     }
 
-    logger.warning("Augmenter should be applied to the instances of @Augmentable classes " +
+    logger.finest("Augmenter should be applied to the instances of @Augmentable classes " +
         "or previously augmented instances only (instance class was: " + driver.getClass() + ")");
     return null;
   }
