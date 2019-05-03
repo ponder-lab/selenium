@@ -126,7 +126,7 @@ public class DefaultDriverFactory implements DriverFactory {
   private void registerDriverProvider(Platform current, DriverProvider provider) {
     Capabilities caps = provider.getProvidedCapabilities();
     if (!platformMatches(current, caps)) {
-      LOG.info(String.format(
+      LOG.finest(String.format(
           "Driver provider %s registration is skipped:%n" +
           " registration capabilities %s does not match the current platform %s",
           provider, caps, current));

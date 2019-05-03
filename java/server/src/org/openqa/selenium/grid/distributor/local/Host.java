@@ -89,7 +89,7 @@ class Host {
       }
 
       if (current != previous) {
-        LOG.info(String.format(
+        LOG.finest(String.format(
             "Changing status of node %s from %s to %s. Reason: %s",
             node.getId(),
             previous,

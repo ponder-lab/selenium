@@ -192,13 +192,13 @@ public class DefaultRemoteProxy extends BaseRemoteProxy
   public void onEvent(List<RemoteException> events, RemoteException lastInserted) {
     for (RemoteException e : events) {
       if (e instanceof RemoteNotReachableException) {
-        LOG.info(e.getMessage());
+        LOG.finest(e.getMessage());
         down = true;
         // We are already in a synchronized block, so do not need to synchronize again
         this.errors.clear();
       }
       if (e instanceof RemoteUnregisterException) {
-        LOG.info(e.getMessage());
+        LOG.finest(e.getMessage());
         GridRegistry registry = this.getRegistry();
         registry.removeIfPresent(this);
       }

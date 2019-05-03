@@ -70,7 +70,7 @@ public class WaitForPageToLoad extends SeleneseCommand<Void> {
       }
     }
 
-    log.fine("Does browser support readyState: " + result);
+    log.finest("Does browser support readyState: " + result);
 
     Wait wait = (result != null && (Boolean) result) ?
         getReadyStateUsingWait(driver) : getLengthCheckingWait(driver);

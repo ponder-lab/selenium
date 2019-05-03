@@ -55,9 +55,9 @@ public class OutOfProcessSeleniumServer {
    * @return The new server.
    */
   public OutOfProcessSeleniumServer start(String... extraFlags) throws IOException {
-    log.info("Got a request to start a new selenium server");
+    log.finest("Got a request to start a new selenium server");
     if (command != null) {
-      log.info("Server already started");
+      log.finest("Server already started");
       throw new RuntimeException("Server already started");
     }
 
@@ -81,14 +81,14 @@ public class OutOfProcessSeleniumServer {
     }
     command.setWorkingDirectory(
       InProject.locate("Rakefile").getParent().toAbsolutePath().toString());
-    log.info("Starting selenium server: " + command.toString());
+    log.finest("Starting selenium server: " + command.toString());
     command.executeAsync();
 
     try {
       URL url = new URL(baseUrl + "/wd/hub/status");
-      log.info("Waiting for server status on URL " + url);
+      log.finest("Waiting for server status on URL " + url);
       new UrlChecker().waitUntilAvailable(30, SECONDS, url);
-      log.info("Server is ready");
+      log.finest("Server is ready");
     } catch (UrlChecker.TimeoutException e) {
       log.severe("Server failed to start: " + e.getMessage());
       command.destroy();
@@ -108,9 +108,9 @@ public class OutOfProcessSeleniumServer {
     if (command == null) {
       return;
     }
-    log.info("Stopping selenium server");
+    log.finest("Stopping selenium server");
     command.destroy();
-    log.info("Selenium server stopped");
+    log.finest("Selenium server stopped");
     command = null;
   }
 
