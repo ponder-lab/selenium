@@ -52,7 +52,7 @@ public class BuckBuild {
       // we should only need to do this when we're in dev mode
       // when running in a test suite, our dependencies should already
       // be listed.
-      log.info("Not in dev mode. Ignoring attempt to build: " + target);
+      log.finest("Not in dev mode. Ignoring attempt to build: " + target);
       return findOutput(projectRoot);
     }
 

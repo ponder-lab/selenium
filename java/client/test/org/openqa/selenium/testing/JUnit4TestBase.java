@@ -85,13 +85,13 @@ public abstract class JUnit4TestBase {
     @Override
     protected void starting(Description description) {
       super.starting(description);
-      logger.info(">>> Starting " + description);
+      logger.finest(">>> Starting " + description);
     }
 
     @Override
     protected void finished(Description description) {
       super.finished(description);
-      logger.info("<<< Finished " + description);
+      logger.finest("<<< Finished " + description);
     }
   }
 

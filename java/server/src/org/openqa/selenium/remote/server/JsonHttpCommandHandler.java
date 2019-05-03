@@ -187,7 +187,7 @@ public class JsonHttpCommandHandler {
 
   public void handleRequest(HttpRequest request, HttpResponse resp) {
     LoggingManager.perSessionLogHandler().clearThreadTempLogs();
-    log.fine(String.format("Handling: %s %s", request.getMethod(), request.getUri()));
+    log.finest(String.format("Handling: %s %s", request.getMethod(), request.getUri()));
 
     Command command = null;
     Response response;
@@ -198,7 +198,7 @@ public class JsonHttpCommandHandler {
         throw new UnsupportedCommandException();
       }
       response = config.handle(command);
-      log.fine(String.format("Finished: %s %s", request.getMethod(), request.getUri()));
+      log.finest(String.format("Finished: %s %s", request.getMethod(), request.getUri()));
     } catch (Exception e) {
       log.fine(String.format("Error on: %s %s", request.getMethod(), request.getUri()));
       response = new Response();

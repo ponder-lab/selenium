@@ -118,7 +118,7 @@ public class DesiredCapabilities extends MutableCapabilities {
    */
   @Deprecated
   public static DesiredCapabilities chrome() {
-    LOG.info("Using `new ChromeOptions()` is preferred to `DesiredCapabilities.chrome()`");
+    LOG.finest("Using `new ChromeOptions()` is preferred to `DesiredCapabilities.chrome()`");
     return new DesiredCapabilities(BrowserType.CHROME, "", Platform.ANY);
   }
 
@@ -127,7 +127,7 @@ public class DesiredCapabilities extends MutableCapabilities {
    */
   @Deprecated
   public static DesiredCapabilities firefox() {
-    LOG.info("Using `new FirefoxOptions()` is preferred to `DesiredCapabilities.firefox()`");
+    LOG.finest("Using `new FirefoxOptions()` is preferred to `DesiredCapabilities.firefox()`");
     DesiredCapabilities capabilities = new DesiredCapabilities(
         BrowserType.FIREFOX,
         "",
@@ -147,7 +147,7 @@ public class DesiredCapabilities extends MutableCapabilities {
    */
   @Deprecated
   public static DesiredCapabilities edge() {
-    LOG.info("Using `new EdgeOptions()` is preferred to `DesiredCapabilities.edge()`");
+    LOG.finest("Using `new EdgeOptions()` is preferred to `DesiredCapabilities.edge()`");
     return new DesiredCapabilities(BrowserType.EDGE, "", Platform.WINDOWS);
   }
 
@@ -177,7 +177,7 @@ public class DesiredCapabilities extends MutableCapabilities {
    */
   @Deprecated
   public static DesiredCapabilities opera() {
-    LOG.info("Using `new OperaOptions()` is preferred to `DesiredCapabilities.opera()`");
+    LOG.finest("Using `new OperaOptions()` is preferred to `DesiredCapabilities.opera()`");
     return new DesiredCapabilities(BrowserType.OPERA_BLINK, "", Platform.ANY);
   }
 
@@ -194,7 +194,7 @@ public class DesiredCapabilities extends MutableCapabilities {
    */
   @Deprecated
   public static DesiredCapabilities safari() {
-    LOG.info("Using `new SafariOptions()` is preferred to `DesiredCapabilities.safari()`");
+    LOG.finest("Using `new SafariOptions()` is preferred to `DesiredCapabilities.safari()`");
     return new DesiredCapabilities(BrowserType.SAFARI, "", Platform.MAC);
   }
 }
