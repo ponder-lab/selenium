@@ -136,7 +136,7 @@ public class JsonOutput implements Closeable {
             GSON_ELEMENT,
             (obj, depth) -> {
               LOG.log(
-                  Level.WARNING,
+                  Level.FINEST,
                   "Attempt to convert JsonElement from GSON. This functionality is deprecated. "
                   + "Diagnostic stacktrace follows",
                   new JsonException("Stack trace to determine cause of warning"));

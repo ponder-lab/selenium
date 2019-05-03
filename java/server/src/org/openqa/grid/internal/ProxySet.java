@@ -125,7 +125,7 @@ public class ProxySet implements Iterable<RemoteProxy> {
     // test running, to avoid putting all the load of the first
     // proxies.
     List<RemoteProxy> sorted = getSorted();
-    log.fine("Available nodes: " + sorted);
+    log.finest("Available nodes: " + sorted);
     return sorted.stream()
         .map(proxy -> proxy.getNewSession(desiredCapabilities))
         .filter(Objects::nonNull)
@@ -147,13 +147,13 @@ public class ProxySet implements Iterable<RemoteProxy> {
         throw new GridException("Empty pool of VM for setup "
                                 + new DesiredCapabilities(desiredCapabilities));
       }
-      log.warning("Empty pool of nodes.");
+      log.finest("Empty pool of nodes.");
     }
     if (!hasCapability(desiredCapabilities)) {
       if (throwOnCapabilityNotPresent) {
         throw new CapabilityNotPresentOnTheGridException(desiredCapabilities);
       }
-      log.warning("grid doesn't contain " + new DesiredCapabilities(desiredCapabilities) +
+      log.finest("grid doesn't contain " + new DesiredCapabilities(desiredCapabilities) +
           " at the moment.");
     }
   }

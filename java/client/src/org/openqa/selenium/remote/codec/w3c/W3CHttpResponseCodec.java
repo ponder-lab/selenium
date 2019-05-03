@@ -74,7 +74,7 @@ public class W3CHttpResponseCodec extends AbstractHttpResponseCodec {
   @Override
   public Response decode(HttpResponse encodedResponse) {
     String content = encodedResponse.getContentString().trim();
-    log.fine(String.format(
+    log.finest(String.format(
       "Decoding response. Response code was: %d and content: %s",
       encodedResponse.getStatus(),
       content));

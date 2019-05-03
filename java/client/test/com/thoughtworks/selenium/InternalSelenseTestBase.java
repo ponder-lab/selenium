@@ -90,7 +90,7 @@ public class InternalSelenseTestBase extends SeleneseTestBase {
       return;
     }
 
-    log.info("In dev mode. Copying required files in case we're using a WebDriver-backed Selenium");
+    log.finest("In dev mode. Copying required files in case we're using a WebDriver-backed Selenium");
 
     Path dir =
       InProject.locate("java/client/build/production/com/thoughtworks/selenium/webdriven");
@@ -125,13 +125,13 @@ public class InternalSelenseTestBase extends SeleneseTestBase {
     @Override
     protected void starting(Description description) {
       super.starting(description);
-      log.info(">>> Starting " + description);
+      log.finest(">>> Starting " + description);
     }
 
     @Override
     protected void finished(Description description) {
       super.finished(description);
-      log.info("<<< Finished " + description);
+      log.finest("<<< Finished " + description);
     }
   };
 

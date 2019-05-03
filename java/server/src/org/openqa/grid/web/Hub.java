@@ -258,9 +258,9 @@ public class Hub implements Stoppable {
       }
     }
 
-    log.info("Selenium Grid hub is up and running");
-    log.info(String.format("Nodes should register to %s", getRegistrationURL()));
-    log.info(String.format("Clients should connect to %s", getWebDriverHubRequestURL()));
+    log.finest("Selenium Grid hub is up and running");
+    log.finest(String.format("Nodes should register to %s", getRegistrationURL()));
+    log.finest(String.format("Clients should connect to %s", getWebDriverHubRequestURL()));
   }
 
   @Override
