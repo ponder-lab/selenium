@@ -230,7 +230,7 @@ public class GridLauncherV3 {
     }
 
     configureLogging(common.getLog(), common.getDebug());
-    log.info(version());
+    log.finest(version());
     return true;
   }
 
@@ -243,7 +243,7 @@ public class GridLauncherV3 {
           }
 
           StandaloneConfiguration configuration = new StandaloneConfiguration(options);
-          log.info(String.format(
+          log.finest(String.format(
               "Launching a standalone Selenium Server on port %s", configuration.port));
           SeleniumServer server = new SeleniumServer(configuration);
           server.boot();
@@ -259,7 +259,7 @@ public class GridLauncherV3 {
           GridHubConfiguration configuration = new GridHubConfiguration(options);
           configuration.setRawArgs(args); // for grid console
 
-          log.info(String.format(
+          log.finest(String.format(
               "Launching Selenium Grid hub on port %s", configuration.port));
           Hub hub = new Hub(configuration);
           hub.start();
@@ -276,13 +276,13 @@ public class GridLauncherV3 {
           if (configuration.port == null || configuration.port == -1) {
             configuration.port = PortProber.findFreePort();
           }
-          log.info(String.format(
+          log.finest(String.format(
               "Launching a Selenium Grid node on port %s", configuration.port));
           SelfRegisteringRemote remote = new SelfRegisteringRemote(configuration);
           SeleniumServer server = new SeleniumServer(remote.getConfiguration());
           remote.setRemoteServer(server);
           if (remote.startRemoteServer()) {
-            log.info("Selenium Grid node is up and ready to register to the hub");
+            log.finest("Selenium Grid node is up and ready to register to the hub");
             remote.startRegistrationProcess();
           }
           return server;

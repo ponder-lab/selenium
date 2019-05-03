@@ -35,7 +35,7 @@ public class Container {
   private final ContainerId id;
 
   public Container(Function<HttpRequest, HttpResponse> client, ContainerId id) {
-    LOG.info("Created container " + id);
+    LOG.finest("Created container " + id);
     this.client = Objects.requireNonNull(client);
     this.id = Objects.requireNonNull(id);
   }
@@ -45,14 +45,14 @@ public class Container {
   }
 
   public void start() {
-    LOG.info("Starting " + getId());
+    LOG.finest("Starting " + getId());
     client.apply(new HttpRequest(POST, String.format("/containers/%s/start", id)));
   }
 
   public void stop(Duration timeout) {
     Objects.requireNonNull(timeout);
 
-    LOG.info("Stopping " + getId());
+    LOG.finest("Stopping " + getId());
 
     String seconds = String.valueOf(timeout.toMillis() / 1000);
 
@@ -63,7 +63,7 @@ public class Container {
   }
 
   public void delete() {
-    LOG.info("Removing " + getId());
+    LOG.finest("Removing " + getId());
 
     HttpRequest request = new HttpRequest(DELETE, "/containers/" + id);
     client.apply(request);

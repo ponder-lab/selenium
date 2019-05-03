@@ -132,7 +132,7 @@ public class TestSlot {
         return null;
       }
       if (matches(desiredCapabilities)) {
-        log.info("Trying to create a new session on test slot " + this.capabilities);
+        log.finest("Trying to create a new session on test slot " + this.capabilities);
         desiredCapabilities.put(GridNodeConfiguration.CONFIG_UUID_CAPABILITY,
                                 capabilities.get(GridNodeConfiguration.CONFIG_UUID_CAPABILITY));
         TestSession session = new TestSession(this, desiredCapabilities, Clock.systemUTC());

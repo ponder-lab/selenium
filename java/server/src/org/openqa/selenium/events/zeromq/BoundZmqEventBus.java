@@ -42,7 +42,7 @@ class BoundZmqEventBus implements EventBus {
     Addresses xpubAddr = deriveAddresses(address, publishConnection);
     Addresses xsubAddr = deriveAddresses(address, subscribeConnection);
 
-    LOG.info(String.format("XPUB binding to %s, XSUB binding to %s", xpubAddr, xsubAddr));
+    LOG.finest(String.format("XPUB binding to %s, XSUB binding to %s", xpubAddr, xsubAddr));
 
     xpub = context.createSocket(ZMQ.XPUB);
     xpub.setImmediate(true);
@@ -61,7 +61,7 @@ class BoundZmqEventBus implements EventBus {
 
     delegate = new UnboundZmqEventBus(context, xpubAddr.advertise, xsubAddr.advertise);
 
-    LOG.info("Event bus ready");
+    LOG.finest("Event bus ready");
   }
 
 

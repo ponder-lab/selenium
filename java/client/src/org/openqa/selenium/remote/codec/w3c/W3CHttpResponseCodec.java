@@ -74,7 +74,7 @@ public class W3CHttpResponseCodec extends AbstractHttpResponseCodec {
   @Override
   public Response decode(HttpResponse encodedResponse) {
     String content = encodedResponse.getContentString().trim();
-    log.fine(String.format(
+    log.finest(String.format(
       "Decoding response. Response code was: %d and content: %s",
       encodedResponse.getStatus(),
       content));
@@ -85,7 +85,7 @@ public class W3CHttpResponseCodec extends AbstractHttpResponseCodec {
     // Are we dealing with an error?
     // {"error":"no such alert","message":"No tab modal was open when attempting to get the dialog text"}
     if (HTTP_OK != encodedResponse.getStatus()) {
-      log.fine("Processing an error");
+      log.finest("Processing an error");
       Map<String, Object> obj = json.toType(content, MAP_TYPE);
 
 

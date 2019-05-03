@@ -56,7 +56,7 @@ public class EventBusConfig {
     if (bus == null) {
       synchronized (this) {
         if (bus == null) {
-          LOG.fine("Creating new event bus");
+          LOG.finest("Creating new event bus");
           ZContext context = new ZContext();
           bus = ZeroMqEventBus.create(context, publish, subscribe, bind);
         }
