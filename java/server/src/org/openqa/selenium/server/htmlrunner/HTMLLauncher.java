@@ -252,7 +252,7 @@ public class HTMLLauncher {
         result = launcher.runHTMLSuite(browser, startURL, suite, results, timeout, processed.userExtensions);
         passed &= "PASSED".equals(result);
       } catch (Throwable e) {
-        log.log(Level.WARNING, "Test of browser failed: " + browser, e);
+        log.log(Level.SEVERE, "Test of browser failed: " + browser, e);
         passed = false;
       }
     }

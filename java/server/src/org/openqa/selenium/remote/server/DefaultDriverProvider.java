@@ -79,7 +79,7 @@ public class DefaultDriverProvider implements DriverProvider {
 
   @Override
   public WebDriver newInstance(Capabilities capabilities) {
-    LOG.info("Creating a new session for " + capabilities);
+    LOG.finer("Creating a new session for " + capabilities);
     // Try and call the single arg constructor that takes a capabilities first
     return callConstructor(driverClass, capabilities);
   }

@@ -212,7 +212,7 @@ public class BaseRemoteProxy implements RemoteProxy {
     @Override
     public void run() {
 
-      log.fine("cleanup thread starting...");
+      log.info("cleanup thread starting...");
       while (!proxy.stop) {
         try {
           Thread.sleep(config.cleanUpCycle);
@@ -292,10 +292,10 @@ public class BaseRemoteProxy implements RemoteProxy {
 
   @Override
   public TestSession getNewSession(Map<String, Object> requestedCapability) {
-    log.fine("Trying to create a new session on node " + this);
+    log.info("Trying to create a new session on node " + this);
 
     if (!hasCapability(requestedCapability)) {
-      log.fine("Node " + this + " has no matching capability");
+      log.info("Node " + this + " has no matching capability");
       return null;
     }
     // any slot left at all?
@@ -369,7 +369,7 @@ public class BaseRemoteProxy implements RemoteProxy {
         proxyClass = BaseRemoteProxy.class.getCanonicalName();
       }
       Class<?> clazz = Class.forName(proxyClass);
-      log.fine("Using class " + clazz.getName());
+      log.finest("Using class " + clazz.getName());
       Object[] args = new Object[]{request, registry};
       Class<?>[] argsClass = new Class[]{RegistrationRequest.class, GridRegistry.class};
       Constructor<?> c = clazz.getConstructor(argsClass);
