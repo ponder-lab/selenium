@@ -70,7 +70,7 @@ public class UrlChecker {
   public void waitUntilAvailable(long timeout, TimeUnit unit, final URL... urls)
       throws TimeoutException {
     long start = System.nanoTime();
-    log.fine("Waiting for " + Arrays.toString(urls));
+    log.info("Waiting for " + Arrays.toString(urls));
     try {
       timeLimiter.callWithTimeout((Callable<Void>) () -> {
         HttpURLConnection connection = null;
@@ -79,7 +79,7 @@ public class UrlChecker {
         while (true) {
           for (URL url : urls) {
             try {
-              log.fine("Polling " + url);
+              log.info("Polling " + url);
               connection = connectToUrl(url);
               if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
                 return null;
@@ -110,7 +110,7 @@ public class UrlChecker {
   public void waitUntilUnavailable(long timeout, TimeUnit unit, final URL url)
       throws TimeoutException {
     long start = System.nanoTime();
-    log.fine("Waiting for " + url);
+    log.info("Waiting for " + url);
     try {
       timeLimiter.callWithTimeout((Callable<Void>) () -> {
         HttpURLConnection connection = null;
@@ -118,7 +118,7 @@ public class UrlChecker {
         long sleepMillis = MIN_POLL_INTERVAL_MS;
         while (true) {
           try {
-            log.fine("Polling " + url);
+            log.info("Polling " + url);
             connection = connectToUrl(url);
             if (connection.getResponseCode() != HttpURLConnection.HTTP_OK) {
               return null;
