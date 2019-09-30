@@ -181,7 +181,7 @@ public class SelfRegisteringRemote {
     }
 
     if (!register) {
-      LOG.info("No registration sent ( register = false )");
+      LOG.fine("No registration sent ( register = false )");
     } else {
       final int
           registerCycleInterval =
@@ -258,11 +258,11 @@ public class SelfRegisteringRemote {
 
       // browserTimeout and timeout are always fetched from the hub. Nodes don't have default values.
       // If a node has browserTimeout or timeout configured, those will have precedence over the hub.
-      LOG.fine(
+      LOG.severe(
           "Fetching browserTimeout and timeout values from the hub before sending registration request");
       try {
         GridHubConfiguration hubConfiguration = getHubConfiguration();
-        LOG.fine("Hub configuration: " + new Json().toJson(hubConfiguration));
+        LOG.severe("Hub configuration: " + new Json().toJson(hubConfiguration));
         if (hubConfiguration.timeout == null || hubConfiguration.browserTimeout == null) {
           throw new GridException("Hub browserTimeout or timeout (or both) are null");
         }
@@ -284,17 +284,17 @@ public class SelfRegisteringRemote {
           registrationRequest.getConfiguration().browserTimeout = hubConfiguration.browserTimeout;
         }
 
-        LOG.fine("Updated node configuration: " + new Json()
+        LOG.severe("Updated node configuration: " + new Json()
             .toJson(registrationRequest.getConfiguration()));
       } catch (Exception e) {
-        LOG.warning(
+        LOG.severe(
             "Error getting the parameters from the hub. The node may end up with wrong timeouts." +
             e.getMessage());
       }
 
       try {
         URL registration = new URL(tmp);
-        LOG.info("Registering the node to the hub: " + registration);
+        LOG.severe("Registering the node to the hub: " + registration);
 
         HttpRequest request = new HttpRequest(POST, registration.toExternalForm());
         updateConfigWithRealPort();
@@ -307,7 +307,7 @@ public class SelfRegisteringRemote {
           throw new GridException(String.format("The hub responded with %s", response.getStatus()));
         }
 
-        LOG.info("The node is registered to the hub and ready to use");
+        LOG.severe("The node is registered to the hub and ready to use");
       } catch (Exception e) {
         throw new GridException("Error sending the registration request: " + e.getMessage());
       }

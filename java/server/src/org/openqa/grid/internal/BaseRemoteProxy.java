@@ -292,7 +292,7 @@ public class BaseRemoteProxy implements RemoteProxy {
 
   @Override
   public TestSession getNewSession(Map<String, Object> requestedCapability) {
-    log.fine("Trying to create a new session on node " + this);
+    log.finest("Trying to create a new session on node " + this);
 
     if (!hasCapability(requestedCapability)) {
       log.fine("Node " + this + " has no matching capability");

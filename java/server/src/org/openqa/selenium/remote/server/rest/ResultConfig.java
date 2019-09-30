@@ -138,18 +138,18 @@ public class ResultConfig {
       return Responses.failure(sessionId, e);
 
     } catch (Exception e) {
-      log.log(Level.WARNING, "Exception thrown", e);
+      log.log(Level.SEVERE, "Exception thrown", e);
 
       Throwable toUse = getRootExceptionCause(e);
 
-      log.warning("Exception: " + toUse.getMessage());
+      log.severe("Exception: " + toUse.getMessage());
       Optional<String> screenshot = Optional.empty();
       if (handler instanceof WebDriverHandler) {
         screenshot = Optional.ofNullable(((WebDriverHandler<?>) handler).getScreenshot());
       }
       response = Responses.failure(sessionId, toUse, screenshot);
     } catch (Error e) {
-      log.info("Error: " + e.getMessage());
+      log.severe("Error: " + e.getMessage());
       response = Responses.failure(sessionId, e);
     }
 
