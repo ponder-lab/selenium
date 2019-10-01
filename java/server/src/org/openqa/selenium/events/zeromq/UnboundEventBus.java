@@ -61,7 +61,7 @@ class UnboundZmqEventBus implements EventBus {
       return thread;
     });
 
-    LOG.info(String.format("Connecting to %s and %s", publishConnection, subscribeConnection));
+    LOG.finer(String.format("Connecting to %s and %s", publishConnection, subscribeConnection));
 
     sub = context.createSocket(SocketType.SUB);
     sub.connect(publishConnection);
@@ -73,7 +73,7 @@ class UnboundZmqEventBus implements EventBus {
     ZMQ.Poller poller = context.createPoller(1);
     poller.register(sub, ZMQ.Poller.POLLIN);
 
-    LOG.info("Sockets created");
+    LOG.finer("Sockets created");
 
     AtomicBoolean pollingStarted = new AtomicBoolean(false);
 
