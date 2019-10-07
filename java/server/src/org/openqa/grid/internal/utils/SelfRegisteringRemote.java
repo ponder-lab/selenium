@@ -181,7 +181,7 @@ public class SelfRegisteringRemote {
     }
 
     if (!register) {
-      LOG.info("No registration sent ( register = false )");
+      LOG.fine("No registration sent ( register = false )");
     } else {
       final int
           registerCycleInterval =
@@ -287,7 +287,7 @@ public class SelfRegisteringRemote {
         LOG.fine("Updated node configuration: " + new Json()
             .toJson(registrationRequest.getConfiguration()));
       } catch (Exception e) {
-        LOG.warning(
+        LOG.severe(
             "Error getting the parameters from the hub. The node may end up with wrong timeouts." +
             e.getMessage());
       }
@@ -307,7 +307,7 @@ public class SelfRegisteringRemote {
           throw new GridException(String.format("The hub responded with %s", response.getStatus()));
         }
 
-        LOG.info("The node is registered to the hub and ready to use");
+        LOG.severe("The node is registered to the hub and ready to use");
       } catch (Exception e) {
         throw new GridException("Error sending the registration request: " + e.getMessage());
       }
