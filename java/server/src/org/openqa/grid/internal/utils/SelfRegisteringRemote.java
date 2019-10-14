@@ -287,7 +287,7 @@ public class SelfRegisteringRemote {
         LOG.fine("Updated node configuration: " + new Json()
             .toJson(registrationRequest.getConfiguration()));
       } catch (Exception e) {
-        LOG.warning(
+        LOG.severe(
             "Error getting the parameters from the hub. The node may end up with wrong timeouts." +
             e.getMessage());
       }

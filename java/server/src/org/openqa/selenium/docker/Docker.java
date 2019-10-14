@@ -118,7 +118,7 @@ public class Docker {
   public Optional<Image> findImage(Predicate<Image> filter) {
     Objects.requireNonNull(filter);
 
-    LOG.fine("Finding image: " + filter);
+    LOG.finest("Finding image: " + filter);
 
     return listImages().stream()
         .filter(filter)

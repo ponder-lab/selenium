@@ -73,7 +73,7 @@ class UnboundZmqEventBus implements EventBus {
     ZMQ.Poller poller = context.createPoller(1);
     poller.register(sub, ZMQ.Poller.POLLIN);
 
-    LOG.info("Sockets created");
+    LOG.fine("Sockets created");
 
     AtomicBoolean pollingStarted = new AtomicBoolean(false);
 
